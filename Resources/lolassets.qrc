@@ -1,0 +1,36 @@
+<RCC>
+  <qresource prefix="/rankedIcons">
+    <file>Champion Icons/NOT_FOUND.png</file>
+    <file>Item Icons/NOT_FOUND.png</file>
+    <file>Summoner Spell Icons/NOT_FOUND.png</file>
+    <file>Ranked Icons/bronze_1.png</file>
+    <file>Ranked Icons/bronze_2.png</file>
+    <file>Ranked Icons/bronze_3.png</file>
+    <file>Ranked Icons/bronze_4.png</file>
+    <file>Ranked Icons/bronze_5.png</file>
+    <file>Ranked Icons/challenger.png</file>
+    <file>Ranked Icons/diamond_1.png</file>
+    <file>Ranked Icons/diamond_2.png</file>
+    <file>Ranked Icons/diamond_3.png</file>
+    <file>Ranked Icons/diamond_4.png</file>
+    <file>Ranked Icons/diamond_5.png</file>
+    <file>Ranked Icons/gold_1.png</file>
+    <file>Ranked Icons/gold_2.png</file>
+    <file>Ranked Icons/gold_3.png</file>
+    <file>Ranked Icons/gold_4.png</file>
+    <file>Ranked Icons/gold_5.png</file>
+    <file>Ranked Icons/master.png</file>
+    <file>Ranked Icons/platinum_1.png</file>
+    <file>Ranked Icons/platinum_2.png</file>
+    <file>Ranked Icons/platinum_3.png</file>
+    <file>Ranked Icons/platinum_4.png</file>
+    <file>Ranked Icons/platinum_5.png</file>
+    <file>Ranked Icons/silver_1.png</file>
+    <file>Ranked Icons/silver_2.png</file>
+    <file>Ranked Icons/silver_3.png</file>
+    <file>Ranked Icons/silver_4.png</file>
+    <file>Ranked Icons/silver_5.png</file>
+    <file>Ranked Icons/unranked.png</file>
+  </qresource>
+  <qresource prefix="/championIcons"/>
+</RCC>
