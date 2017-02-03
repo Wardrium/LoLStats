@@ -1,8 +1,5 @@
 <RCC>
   <qresource prefix="/rankedIcons">
-    <file>Champion Icons/NOT_FOUND.png</file>
-    <file>Item Icons/NOT_FOUND.png</file>
-    <file>Summoner Spell Icons/NOT_FOUND.png</file>
     <file>Ranked Icons/bronze_1.png</file>
     <file>Ranked Icons/bronze_2.png</file>
     <file>Ranked Icons/bronze_3.png</file>
@@ -32,5 +29,13 @@
     <file>Ranked Icons/silver_5.png</file>
     <file>Ranked Icons/unranked.png</file>
   </qresource>
-  <qresource prefix="/championIcons"/>
+  <qresource prefix="championIcons">
+    <file>Champion Icons/NOT_FOUND.png</file>
+  </qresource>
+  <qresource prefix="summonerSpellIcons">
+    <file>Summoner Spell Icons/NOT_FOUND.png</file>
+  </qresource>
+  <qresource prefix="itemIcons">
+    <file>Item Icons/NOT_FOUND.png</file>
+  </qresource>
 </RCC>

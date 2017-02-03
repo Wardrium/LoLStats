@@ -27,6 +27,7 @@ LoLStats::LoLStats(QWidget *parent)
 // Search player and load in required data
 void LoLStats::searchPlayer() {
 	// Reset values
+	data.resetData();
 	QString username = ui.usernameText->text();
 	data.prepareMainPage(username);
 	loadMainPage();
@@ -106,7 +107,6 @@ void LoLStats::loadMatchHistory() {
 void LoLStats::loadGraph() {
 	clearGraph();
 	int graphMode = qobject_cast<QComboBox*>(ui.tabWidget->findChild<QObject*>("graphSelector"))->currentIndex();
-	qDebug() << graphMode;
 	switch (graphMode) {
 		case 0:
 			loadCSperMinGraph(selectedGames);
