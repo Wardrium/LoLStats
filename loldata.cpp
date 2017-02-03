@@ -17,15 +17,15 @@ const QHash<QString, LoLData::Rank> LoLData::STRING_TO_RANK({ { "BRONZEV", LoLDa
 { "DIAMONDII", LoLData::DIAMOND_2 },{ "DIAMONDI", LoLData::DIAMOND_1 },{ "MASTERI", LoLData::MASTER },
 { "CHALLENGERI", LoLData::CHALLENGER } });
 // Map from Rank to display string
-const QHash<LoLData::Rank, QString> LoLData::RANK_TO_DISPLAY({ { LoLData::BRONZE_5, "Bronze 5" },{ LoLData::BRONZE_4, "Bronze 4" },
-{ LoLData::BRONZE_3, "Bronze 3" },{ LoLData::BRONZE_2, "Bronze 2" },{ LoLData::BRONZE_1, "Bronze 1" },
-{ LoLData::SILVER_5, "Silver 5" },{ LoLData::SILVER_4, "Silver 4" },{ LoLData::SILVER_3, "Silver 3" },
-{ LoLData::SILVER_2, "Silver 2" },{ LoLData::SILVER_1, "Silver 1" },{ LoLData::GOLD_5, "Gold 5" },
-{ LoLData::GOLD_4, "Gold 4" },{ LoLData::GOLD_3, "Gold 3" },{ LoLData::GOLD_2, "Gold 2" },
-{ LoLData::GOLD_1, "Gold 1" },{ LoLData::PLATINUM_5, "Platinum 5" },{ LoLData::PLATINUM_4, "Platinum 4" },
-{ LoLData::PLATINUM_3, "Platinum 3" },{ LoLData::PLATINUM_2, "Platinum 2" },{ LoLData::PLATINUM_1, "Platinum 1" },
-{ LoLData::DIAMOND_5, "Diamond 5" },{ LoLData::DIAMOND_4, "Diamond 4" },{ LoLData::DIAMOND_3, "Diamond 3" },
-{ LoLData::DIAMOND_2, "Diamond 2" },{ LoLData::DIAMOND_1, "Diamond 1" },{ LoLData::MASTER, "Master" },
+const QHash<LoLData::Rank, QString> LoLData::RANK_TO_DISPLAY({ { LoLData::BRONZE_5, "Bronze V" },{ LoLData::BRONZE_4, "Bronze IV" },
+{ LoLData::BRONZE_3, "Bronze III" },{ LoLData::BRONZE_2, "Bronze II" },{ LoLData::BRONZE_1, "Bronze I" },
+{ LoLData::SILVER_5, "Silver V" },{ LoLData::SILVER_4, "Silver IV" },{ LoLData::SILVER_3, "Silver III" },
+{ LoLData::SILVER_2, "Silver II" },{ LoLData::SILVER_1, "Silver I" },{ LoLData::GOLD_5, "Gold V" },
+{ LoLData::GOLD_4, "Gold IV" },{ LoLData::GOLD_3, "Gold III" },{ LoLData::GOLD_2, "Gold II" },
+{ LoLData::GOLD_1, "Gold I" },{ LoLData::PLATINUM_5, "Platinum V" },{ LoLData::PLATINUM_4, "Platinum IV" },
+{ LoLData::PLATINUM_3, "Platinum III" },{ LoLData::PLATINUM_2, "Platinum II" },{ LoLData::PLATINUM_1, "Platinum I" },
+{ LoLData::DIAMOND_5, "Diamond V" },{ LoLData::DIAMOND_4, "Diamond IV" },{ LoLData::DIAMOND_3, "Diamond III" },
+{ LoLData::DIAMOND_2, "Diamond II" },{ LoLData::DIAMOND_1, "Diamond I" },{ LoLData::MASTER, "Master" },
 { LoLData::CHALLENGER, "Challenger" },{ LoLData::UNRANKED, "Unranked" } });
 
 // Map from Rank to icon png name

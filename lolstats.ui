@@ -276,7 +276,7 @@
                        <widget class="QLabel" name="soloRankIcon">
                         <property name="maximumSize">
                          <size>
-                          <width>200</width>
+                          <width>180</width>
                           <height>150</height>
                          </size>
                         </property>
@@ -320,19 +320,19 @@
                        <widget class="QLabel" name="soloRankLabel">
                         <property name="minimumSize">
                          <size>
-                          <width>167</width>
+                          <width>220</width>
                           <height>0</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>167</width>
+                          <width>220</width>
                           <height>16777215</height>
                          </size>
                         </property>
                         <property name="font">
                          <font>
-                          <pointsize>30</pointsize>
+                          <pointsize>28</pointsize>
                          </font>
                         </property>
                         <property name="text">
@@ -403,7 +403,7 @@
                        <widget class="QLabel" name="flexRankIcon">
                         <property name="maximumSize">
                          <size>
-                          <width>200</width>
+                          <width>180</width>
                           <height>150</height>
                          </size>
                         </property>
@@ -450,19 +450,19 @@
                         </property>
                         <property name="minimumSize">
                          <size>
-                          <width>167</width>
+                          <width>220</width>
                           <height>0</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>167</width>
+                          <width>220</width>
                           <height>16777215</height>
                          </size>
                         </property>
                         <property name="font">
                          <font>
-                          <pointsize>30</pointsize>
+                          <pointsize>28</pointsize>
                          </font>
                         </property>
                         <property name="text">
@@ -616,7 +616,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1114</width>
+                   <width>1073</width>
                    <height>608</height>
                   </rect>
                  </property>
