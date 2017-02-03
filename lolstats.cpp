@@ -1,5 +1,4 @@
 #include <QUrl>
-#include <QDebug>
 #include <QFileInfo>
 #include <QChart>
 #include <QChartView>

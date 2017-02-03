@@ -47,3 +47,4 @@ Resources/Champion Icons/*
 Resources/Item Icons/*
 Resources/Summoner Spell Icons/*
 !Resources/*/NOT_FOUND.png
+!Release/*
