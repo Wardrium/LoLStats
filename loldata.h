@@ -2,7 +2,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtNetwork>
 #include <QUrl>
-#include <QDebug>
 #include <QFileInfo>
 #include <QChart>
 #include <QLineSeries>
