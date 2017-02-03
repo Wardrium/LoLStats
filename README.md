@@ -24,3 +24,4 @@ Can click the "Graph Data" button to plot data from the past 10 games.
 * Add more types of data to graph by
 * Filter games by type (i.e. ranked, normal)
 * Support all the game types (currently only has proper name tags for ranked games, normal games, and twisted treeline games)
+* Make interface more visually appealing.
