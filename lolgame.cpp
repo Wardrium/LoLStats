@@ -6,7 +6,7 @@ LoLGame::LoLGame(QWidget *parent)
 	ui.setupUi(this);
 }
 
-LoLGame::LoLGame(LoLStats::Game* game, QWidget *parent)
+LoLGame::LoLGame(LoLData::Game* game, QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -19,9 +19,9 @@ LoLGame::LoLGame(LoLStats::Game* game, QWidget *parent)
 	}
 	
 
-	auto it = GAME_TYPE_TO_DISPLAY.find(game->gameType);
-	if (it != GAME_TYPE_TO_DISPLAY.end())	// Game type found
-		ui.gameTypeLabel->setText(GAME_TYPE_TO_DISPLAY[game->gameType]);
+	auto it = LoLData::GAME_TYPE_TO_DISPLAY.find(game->gameType);
+	if (it != LoLData::GAME_TYPE_TO_DISPLAY.end())	// Game type found
+		ui.gameTypeLabel->setText(LoLData::GAME_TYPE_TO_DISPLAY[game->gameType]);
 	else {
 		ui.gameTypeLabel->setText(game->gameType);
 	}
@@ -30,10 +30,10 @@ LoLGame::LoLGame(LoLStats::Game* game, QWidget *parent)
 		QString::number(game->deaths) + "/" + QString::number(game->assists));
 	ui.timeLabel->setText(game->gameDate.toString("MM/dd/yyyy"));
 	for (int i = 0; i < 5; i++) {
-		LoLStats::GamePlayer player = game->team1Players[i];
+		LoLData::GamePlayer player = game->team1Players[i];
 	}
 	for (int i = 0; i < 5; i++) {
-		LoLStats::GamePlayer player = game->team2Players[i];
+		LoLData::GamePlayer player = game->team2Players[i];
 	}
 	setChampionIcon(ui.championLabel, game->championID);
 	setChampionIcon(ui.player1ChampionLabel, game->team1Players[0].championID);
@@ -72,21 +72,21 @@ LoLGame::~LoLGame()
 }
 
 void LoLGame::setChampionIcon(QLabel* label, int championID) {
-	QString imageName = LoLStats::ID_TO_CHAMPION[championID].imageName;
+	QString imageName = LoLData::ID_TO_CHAMPION[championID].imageName;
 	label->setPixmap(QPixmap("Resources/Champion Icons/" + imageName));
 }
 
 void LoLGame::setSummonerSpellIcon(QLabel* label, int summonerSpellIcon) {
-	QString imageName = LoLStats::ID_TO_SUMMONER[summonerSpellIcon].imageName;
+	QString imageName = LoLData::ID_TO_SUMMONER[summonerSpellIcon].imageName;
 	label->setPixmap(QPixmap("Resources/Summoner Spell Icons/" + imageName));
 }
 
 void LoLGame::setItemIcon(QLabel* label, int itemID) {
-	QString imageName = LoLStats::ID_TO_ITEM[itemID].imageName;
+	QString imageName = LoLData::ID_TO_ITEM[itemID].imageName;
 	label->setPixmap(QPixmap("Resources/Item Icons/" + imageName));
 }
 
 void LoLGame::setPlayerName(QLabel* label, int playerID) {
-	QString name = LoLStats::ID_TO_PLAYER[playerID];
+	QString name = LoLData::ID_TO_PLAYER[playerID];
 	label->setText(name);
 }

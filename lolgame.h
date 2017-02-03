@@ -4,8 +4,7 @@
 #include <QWidget>
 #include "ui_lolgame.h"
 #include "lolstats.h"
-
-extern const QHash<QString, QString> GAME_TYPE_TO_DISPLAY;
+#include "loldata.h"
 
 class LoLGame : public QWidget
 {
@@ -13,7 +12,7 @@ class LoLGame : public QWidget
 
 public:
 	LoLGame(QWidget *parent = 0);
-	LoLGame(LoLStats::Game* game, QWidget *parent = 0);
+	LoLGame(LoLData::Game* game, QWidget *parent = 0);
 	~LoLGame();
 
 private:
