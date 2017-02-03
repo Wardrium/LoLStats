@@ -61,6 +61,7 @@ public:
 	struct Game {
 		QString gameType;
 		int kills, deaths, assists;
+		double KDA;
 		QDateTime gameDate;
 		int championID;
 		int spell1ID, spell2ID;
@@ -69,6 +70,7 @@ public:
 
 		bool win;
 		int creepScore;
+		int gold;
 		int totalDamageDealtToChampions;
 		int gameLength;	// In seconds
 

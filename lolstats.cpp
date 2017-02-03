@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QChart>
-#include <QLineSeries>
 #include <QChartView>
 #include <QValueAxis>
 
@@ -22,7 +21,7 @@ LoLStats::LoLStats(QWidget *parent)
 	ui.setupUi(this);
 	connect(ui.searchButton, SIGNAL(clicked()), this, SLOT(searchPlayer()));
 	connect(ui.newSearchButton, SIGNAL(clicked()), this, SLOT(switchSearchPage()));
-	connect(ui.debugButton, SIGNAL(clicked()), this, SLOT(debug()));
+	connect(qobject_cast<QComboBox*>(ui.tabWidget->findChild<QObject*>("graphSelector")), SIGNAL(currentIndexChanged(int)), this, SLOT(loadGraph()));
 }
 
 // Search player and load in required data
@@ -32,6 +31,7 @@ void LoLStats::searchPlayer() {
 	data.prepareMainPage(username);
 	loadMainPage();
 	loadMatchHistory();
+	loadGraph();
 	switchMainPage();
 }
 
@@ -103,24 +103,68 @@ void LoLStats::loadMatchHistory() {
 	}
 }
 
-void LoLStats::loadGraph(int mode) {
+void LoLStats::loadGraph() {
 	clearGraph();
+	int graphMode = qobject_cast<QComboBox*>(ui.tabWidget->findChild<QObject*>("graphSelector"))->currentIndex();
+	qDebug() << graphMode;
+	switch (graphMode) {
+		case 0:
+			loadCSperMinGraph(selectedGames);
+			break;
+		case 1:
+			loadGoldperMinGraph(selectedGames);
+			break;
+		case 2:
+			loadKDAGraph(selectedGames);
+			break;
+	}
+}
+
+
+// Helper functions for getting display reaedy >>>>>>>>>>>>>>>>>>>>>>>>>>>
+void LoLStats::loadCSperMinGraph(const QVector<LoLData::Game*>& games) {
 	QLineSeries *series = new QLineSeries();
-	
-	if (mode == 0) {	// Graph average cs/min
-		for (int i = 0; i < data.games.size(); i++) {
-			double csPerMin = data.games[i].creepScore / ((double)data.games[i].gameLength / 60);
-			series->append(data.games.size() - i - 1, csPerMin);
-		}
+
+	// Graph average cs/min
+	for (int i = 0; i < data.games.size(); i++) {
+		double csPerMin = data.games[i].creepScore / ((double)data.games[i].gameLength / 60);
+		series->append(data.games.size() - i - 1, csPerMin);
 	}
 
+	setupGraph("CS/Min over past 10 games", "Games (Most recent on right)", "CS/Min", series);
+}
+
+void LoLStats::loadGoldperMinGraph(const QVector<LoLData::Game*>& games) {
+	QLineSeries *series = new QLineSeries();
+
+	// Graph average gold/min
+	for (int i = 0; i < data.games.size(); i++) {
+		double goldPerMin = data.games[i].gold / ((double)data.games[i].gameLength / 60);
+		series->append(data.games.size() - i - 1, goldPerMin);
+	}
+
+	setupGraph("Gold/Min over past 10 games", "Games (Most recent on right)", "Gold/Min", series);
+}
+
+void LoLStats::loadKDAGraph(const QVector<LoLData::Game*>& games) {
+	QLineSeries *series = new QLineSeries();
+
+	// Graph average gold/min
+	for (int i = 0; i < data.games.size(); i++) {
+		series->append(data.games.size() - i - 1, data.games[i].KDA);
+	}
+
+	setupGraph("KDA ratio over past 10 games", "Games (Most recent on right)", "KDA", series);
+}
+
+void LoLStats::setupGraph(QString title, QString axisXTitle, QString axisYTitle, QLineSeries* series) {
 	QChart *chart = new QChart();
 	chart->addSeries(series);
 	chart->legend()->hide();
-	chart->setTitle("CS/Min over past 10 games");
+	chart->setTitle(title);
 
 	QValueAxis *axisX = new QValueAxis;
-	axisX->setTitleText("Games (Most recent on right)");
+	axisX->setTitleText(axisXTitle);
 	axisX->setTickCount(10);
 	axisX->setLabelsVisible(false);
 	chart->addAxis(axisX, Qt::AlignBottom);
@@ -128,19 +172,15 @@ void LoLStats::loadGraph(int mode) {
 
 	QValueAxis *axisY = new QValueAxis;
 	axisY->setMin(0);
-	axisY->setLabelFormat("%i");
-	axisY->setTitleText("CS/Min");
+	axisY->setTitleText(axisYTitle);
 	chart->addAxis(axisY, Qt::AlignLeft);
 	series->attachAxis(axisY);
-	
+
 	QChartView *chartView = new QChartView(chart);
 	chartView->setRenderHint(QPainter::Antialiasing);
-	
+
 	ui.graphLayout->addWidget(chartView);
 }
-
-
-// Helper functions for getting display reaedy >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 void LoLStats::addGameToHistory(LoLData::Game* game) {
 	LoLGame* matchWidgit = new LoLGame(game, this);
@@ -161,8 +201,4 @@ void LoLStats::clearGraph() {
 		delete item->widget();
 		delete item;
 	}
-}
-
-void LoLStats::debug() {
-	loadGraph(0);
 }

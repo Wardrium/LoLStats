@@ -104,10 +104,7 @@ void LoLData::resetData() {
 
 void LoLData::prepareChampionIcons() {
 	for (auto it = championIDs.begin(); it != championIDs.end(); it++) {
-		if (QFileInfo::exists("Resources/Champion Icons/" + ID_TO_CHAMPION[*it].imageName)) {
-
-		}
-		else {
+		if (!QFileInfo::exists("Resources/Champion Icons/" + ID_TO_CHAMPION[*it].imageName)) {
 			queryChampionIcon(*it, &LoLData::downloadChampionIcon);
 			WAIT_HTTP_REQUEST
 		}
@@ -116,10 +113,7 @@ void LoLData::prepareChampionIcons() {
 
 void LoLData::prepareSummonerSpellIcons() {
 	for (auto it = summonerSpellIDs.begin(); it != summonerSpellIDs.end(); it++) {
-		if (QFileInfo::exists("Resources/Summoner Spell Icons/" + ID_TO_SUMMONER[*it].imageName)) {
-
-		}
-		else {
+		if (!QFileInfo::exists("Resources/Summoner Spell Icons/" + ID_TO_SUMMONER[*it].imageName)) {
 			querySummonerSpellIcon(*it, &LoLData::downloadSummonerSpellIcon);
 			WAIT_HTTP_REQUEST
 		}
@@ -128,10 +122,7 @@ void LoLData::prepareSummonerSpellIcons() {
 
 void LoLData::prepareItemIcons() {
 	for (auto it = itemIDs.begin(); it != itemIDs.end(); it++) {
-		if (QFileInfo::exists("Resources/Item Icons/" + ID_TO_ITEM[*it].imageName)) {
-
-		}
-		else {
+		if (!QFileInfo::exists("Resources/Item Icons/" + ID_TO_ITEM[*it].imageName)) {
 			queryItemIcon(*it, &LoLData::downloadItemIcon);
 			WAIT_HTTP_REQUEST
 		}
@@ -305,10 +296,12 @@ void LoLData::loadMatchHistory() {
 			game.kills = stats["championsKilled"].toInt();
 			game.deaths = stats["numDeaths"].toInt();
 			game.assists = stats["assists"].toInt();
+			game.KDA = (double)(game.kills + game.assists) / game.deaths;
 			game.setGameDate(gameInfo["createDate"].toDouble());
 			game.win = stats["win"].toBool();
 			game.gameLength = stats["timePlayed"].toInt();
 			game.creepScore = stats["minionsKilled"].toInt() + stats["neutralMinionsKilled"].toInt();
+			game.gold = stats["goldEarned"].toInt();
 			game.totalDamageDealtToChampions = stats["totalDamageDealtToChampions"].toInt();
 			game.championID = gameInfo["championId"].toInt();
 			championIDs.insert(game.championID);

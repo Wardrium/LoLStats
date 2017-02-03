@@ -3,6 +3,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtNetwork>
+#include <QLineSeries>
+
 #include "ui_lolstats.h"
 #include "LoLData.h"
 
@@ -16,6 +18,7 @@ public:
 private:
 	Ui::LoLStatsClass ui;
 	LoLData data;
+	QVector<LoLData::Game*> selectedGames;	// Selected games to be graphed
 
 	// Switch between pages
 	void switchMainPage();
@@ -23,17 +26,20 @@ private:
 	// Get display ready
 	void loadMainPage();
 	void loadMatchHistory();
-	void loadGraph(int mode);
 
 	// Helper functions for getting display ready
+	void loadCSperMinGraph(const QVector<LoLData::Game*>& games);
+	void loadGoldperMinGraph(const QVector<LoLData::Game*>& games);
+	void loadKDAGraph(const QVector<LoLData::Game*>& games);
+	void setupGraph(QString title, QString axisXTitle, QString axisYTitle, QtCharts::QLineSeries* series);
 	void addGameToHistory(LoLData::Game* game);
 	void clearMatchHistory();
 	void clearGraph();
 
-private slots:
+private slots:	
+	void loadGraph();
 	void searchPlayer(); 	// Search player and load in required data
 	void switchSearchPage();
-	void debug();
 };
 
 #endif // LOLSTATS_H
